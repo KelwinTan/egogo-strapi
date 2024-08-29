@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "egogo_investor_relations",
+  "info": {
+    "singularName": "egogo-investor-relation",
+    "pluralName": "egogo-investor-relations",
+    "displayName": "egogo-investor-relation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "FileName": {
+      "type": "string"
+    },
+    "File": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

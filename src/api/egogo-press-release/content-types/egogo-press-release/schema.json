@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "egogo_press_releases",
+  "info": {
+    "singularName": "egogo-press-release",
+    "pluralName": "egogo-press-releases",
+    "displayName": "egogo-press-release",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NewsTitle": {
+      "type": "string"
+    },
+    "NewsSubtitle": {
+      "type": "string"
+    },
+    "NewsCategory": {
+      "type": "string"
+    },
+    "NewsContent": {
+      "type": "blocks"
+    }
+  }
+}

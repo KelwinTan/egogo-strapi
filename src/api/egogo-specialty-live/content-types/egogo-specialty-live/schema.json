@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "egogo_specialty_lives",
+  "info": {
+    "singularName": "egogo-specialty-live",
+    "pluralName": "egogo-specialty-lives",
+    "displayName": "egogo-specialty-live"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "CategoryName": {
+      "type": "string"
+    },
+    "CategoryDescription": {
+      "type": "string"
+    },
+    "CategoryImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

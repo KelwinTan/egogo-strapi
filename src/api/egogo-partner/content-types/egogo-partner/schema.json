@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "egogo_partners",
+  "info": {
+    "singularName": "egogo-partner",
+    "pluralName": "egogo-partners",
+    "displayName": "egogo-partner"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "CompanyURL": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "egogo_inquiry_faqs",
+  "info": {
+    "singularName": "egogo-inquiry-faq",
+    "pluralName": "egogo-inquiry-faqs",
+    "displayName": "egogo-inquiry-faq"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "question": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "text"
+    }
+  }
+}

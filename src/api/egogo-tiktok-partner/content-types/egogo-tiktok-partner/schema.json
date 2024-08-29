@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "egogo_tiktok_partners",
+  "info": {
+    "singularName": "egogo-tiktok-partner",
+    "pluralName": "egogo-tiktok-partners",
+    "displayName": "egogo-tiktok-partner"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ProfileName": {
+      "type": "string"
+    },
+    "ProfileImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

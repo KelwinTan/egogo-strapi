@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "egogo_journeys",
+  "info": {
+    "singularName": "egogo-journey",
+    "pluralName": "egogo-journeys",
+    "displayName": "egogo-journey"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Year": {
+      "type": "string"
+    },
+    "HistoricalText": {
+      "type": "string"
+    },
+    "HistoricalImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
