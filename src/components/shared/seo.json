@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_seos",
+  "info": {
+    "displayName": "Seo",
+    "icon": "earth",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "metaKeywords": {
+      "type": "string",
+      "regex": "^\\s*([^,\\s]+)\\s*(,\\s*[^,\\s]+\\s*)*$",
+      "required": true,
+      "minLength": 2
+    },
+    "metaDescription": {
+      "type": "text",
+      "minLength": 2,
+      "maxLength": 150
+    }
+  }
+}

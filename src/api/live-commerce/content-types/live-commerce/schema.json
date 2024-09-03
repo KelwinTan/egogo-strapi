@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "live_commerces",
+  "info": {
+    "singularName": "live-commerce",
+    "pluralName": "live-commerces",
+    "displayName": "Live Commerce",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "live_commerce_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::live-commerce-category.live-commerce-category"
+    }
+  }
+}

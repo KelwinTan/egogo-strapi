@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "job_vacancies",
+  "info": {
+    "singularName": "job-vacancy",
+    "pluralName": "job-vacancies",
+    "displayName": "Job Vacancy"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "jobTitle": {
+      "type": "string"
+    },
+    "jobDescription": {
+      "type": "text"
+    }
+  }
+}

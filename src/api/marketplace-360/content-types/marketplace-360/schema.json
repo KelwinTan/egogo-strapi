@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "marketplace_360s",
+  "info": {
+    "singularName": "marketplace-360",
+    "pluralName": "marketplace-360s",
+    "displayName": "Marketplace 360",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "description": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "marketplace_360_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::marketplace-360-category.marketplace-360-category"
+    }
+  }
+}

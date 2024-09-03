@@ -788,63 +788,31 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiEgogoInquiryFaqEgogoInquiryFaq
-  extends Schema.CollectionType {
-  collectionName: 'egogo_inquiry_faqs';
+export interface ApiClientClient extends Schema.CollectionType {
+  collectionName: 'clients';
   info: {
-    singularName: 'egogo-inquiry-faq';
-    pluralName: 'egogo-inquiry-faqs';
-    displayName: 'egogo-inquiry-faq';
+    singularName: 'client';
+    pluralName: 'clients';
+    displayName: 'Client';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    question: Attribute.String;
-    answer: Attribute.Text;
+    name: Attribute.String & Attribute.Required;
+    logo: Attribute.Media<'images' | 'videos'> & Attribute.Required;
+    url: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::egogo-inquiry-faq.egogo-inquiry-faq',
+      'api::client.client',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::egogo-inquiry-faq.egogo-inquiry-faq',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiEgogoInvestorRelationEgogoInvestorRelation
-  extends Schema.CollectionType {
-  collectionName: 'egogo_investor_relations';
-  info: {
-    singularName: 'egogo-investor-relation';
-    pluralName: 'egogo-investor-relations';
-    displayName: 'egogo-investor-relation';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    FileName: Attribute.String;
-    File: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::egogo-investor-relation.egogo-investor-relation',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::egogo-investor-relation.egogo-investor-relation',
+      'api::client.client',
       'oneToOne',
       'admin::user'
     > &
@@ -857,128 +825,27 @@ export interface ApiEgogoJourneyEgogoJourney extends Schema.CollectionType {
   info: {
     singularName: 'egogo-journey';
     pluralName: 'egogo-journeys';
-    displayName: 'egogo-journey';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Year: Attribute.String;
-    HistoricalText: Attribute.String;
-    HistoricalImage: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::egogo-journey.egogo-journey',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::egogo-journey.egogo-journey',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiEgogoLiveHostEgogoLiveHost extends Schema.CollectionType {
-  collectionName: 'egogo_live_hosts';
-  info: {
-    singularName: 'egogo-live-host';
-    pluralName: 'egogo-live-hosts';
-    displayName: 'egogo-live-host';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    HostName: Attribute.String;
-    HostAchievement: Attribute.String;
-    HostImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::egogo-live-host.egogo-live-host',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::egogo-live-host.egogo-live-host',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiEgogoPartnerEgogoPartner extends Schema.CollectionType {
-  collectionName: 'egogo_partners';
-  info: {
-    singularName: 'egogo-partner';
-    pluralName: 'egogo-partners';
-    displayName: 'egogo-partner';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    Logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    CompanyURL: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::egogo-partner.egogo-partner',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::egogo-partner.egogo-partner',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiEgogoPressReleaseEgogoPressRelease
-  extends Schema.CollectionType {
-  collectionName: 'egogo_press_releases';
-  info: {
-    singularName: 'egogo-press-release';
-    pluralName: 'egogo-press-releases';
-    displayName: 'egogo-press-release';
+    displayName: 'Egogo Journey';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    NewsTitle: Attribute.String;
-    NewsSubtitle: Attribute.String;
-    NewsCategory: Attribute.String;
-    NewsContent: Attribute.Blocks;
+    historicalDescription: Attribute.Text & Attribute.Required;
+    historicalMedia: Attribute.Media<'images' | 'videos', true>;
+    date: Attribute.Date & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::egogo-press-release.egogo-press-release',
+      'api::egogo-journey.egogo-journey',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::egogo-press-release.egogo-press-release',
+      'api::egogo-journey.egogo-journey',
       'oneToOne',
       'admin::user'
     > &
@@ -986,103 +853,705 @@ export interface ApiEgogoPressReleaseEgogoPressRelease
   };
 }
 
-export interface ApiEgogoSpecialty360EgogoSpecialty360
-  extends Schema.CollectionType {
-  collectionName: 'egogo_specialty_360s';
+export interface ApiInquiryInquiry extends Schema.CollectionType {
+  collectionName: 'inquiries';
   info: {
-    singularName: 'egogo-specialty-360';
-    pluralName: 'egogo-specialty-360s';
-    displayName: 'egogo-specialty-360';
+    singularName: 'inquiry';
+    pluralName: 'inquiries';
+    displayName: 'Inquiry';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    CategoryName: Attribute.String;
-    CategoryDescription: Attribute.String;
-    CategoryImage: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
+    company: Attribute.String;
+    firstName: Attribute.String;
+    lastName: Attribute.String;
+    email: Attribute.String;
+    question: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::inquiry.inquiry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::inquiry.inquiry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiInquiryFaqInquiryFaq extends Schema.CollectionType {
+  collectionName: 'inquiry_faqs';
+  info: {
+    singularName: 'inquiry-faq';
+    pluralName: 'inquiry-faqs';
+    displayName: 'Inquiry FAQ';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    question: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::inquiry-faq.inquiry-faq',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::inquiry-faq.inquiry-faq',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::inquiry-faq.inquiry-faq',
+      'oneToMany',
+      'api::inquiry-faq.inquiry-faq'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiInvestorRelationInvestorRelation
+  extends Schema.CollectionType {
+  collectionName: 'investor_relations';
+  info: {
+    singularName: 'investor-relation';
+    pluralName: 'investor-relations';
+    displayName: 'Investor Relation';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    date: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fileName: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+    file: Attribute.Media<'files'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::investor-relation.investor-relation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::investor-relation.investor-relation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::investor-relation.investor-relation',
+      'oneToMany',
+      'api::investor-relation.investor-relation'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiJobDepartmentJobDepartment extends Schema.CollectionType {
+  collectionName: 'job_departments';
+  info: {
+    singularName: 'job-department';
+    pluralName: 'job-departments';
+    displayName: 'Job Department';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    departmentName: Attribute.String;
+    contactPerson: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::job-department.job-department',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::job-department.job-department',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiJobVacancyJobVacancy extends Schema.CollectionType {
+  collectionName: 'job_vacancies';
+  info: {
+    singularName: 'job-vacancy';
+    pluralName: 'job-vacancies';
+    displayName: 'Job Vacancy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    jobTitle: Attribute.String;
+    jobDescription: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::job-vacancy.job-vacancy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::job-vacancy.job-vacancy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLiveCommerceLiveCommerce extends Schema.CollectionType {
+  collectionName: 'live_commerces';
+  info: {
+    singularName: 'live-commerce';
+    pluralName: 'live-commerces';
+    displayName: 'Live Commerce';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    media: Attribute.Media<'images' | 'videos', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    live_commerce_category: Attribute.Relation<
+      'api::live-commerce.live-commerce',
+      'oneToOne',
+      'api::live-commerce-category.live-commerce-category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::egogo-specialty-360.egogo-specialty-360',
+      'api::live-commerce.live-commerce',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::egogo-specialty-360.egogo-specialty-360',
+      'api::live-commerce.live-commerce',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::live-commerce.live-commerce',
+      'oneToMany',
+      'api::live-commerce.live-commerce'
+    >;
+    locale: Attribute.String;
   };
 }
 
-export interface ApiEgogoSpecialtyLiveEgogoSpecialtyLive
+export interface ApiLiveCommerceCategoryLiveCommerceCategory
   extends Schema.CollectionType {
-  collectionName: 'egogo_specialty_lives';
+  collectionName: 'live_commerce_categories';
   info: {
-    singularName: 'egogo-specialty-live';
-    pluralName: 'egogo-specialty-lives';
-    displayName: 'egogo-specialty-live';
+    singularName: 'live-commerce-category';
+    pluralName: 'live-commerce-categories';
+    displayName: 'Live Commerce Category';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    CategoryName: Attribute.String;
-    CategoryDescription: Attribute.String;
-    CategoryImage: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.UID<
+      'api::live-commerce-category.live-commerce-category',
+      'name'
+    > &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::live-commerce-category.live-commerce-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::live-commerce-category.live-commerce-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::live-commerce-category.live-commerce-category',
+      'oneToMany',
+      'api::live-commerce-category.live-commerce-category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiLiveHostLiveHost extends Schema.CollectionType {
+  collectionName: 'live_hosts';
+  info: {
+    singularName: 'live-host';
+    pluralName: 'live-hosts';
+    displayName: 'Live Host';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    hostName: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    achievement: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hostPhoto: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::live-host.live-host',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::live-host.live-host',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::live-host.live-host',
+      'oneToMany',
+      'api::live-host.live-host'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiMarketplace360Marketplace360 extends Schema.CollectionType {
+  collectionName: 'marketplace_360s';
+  info: {
+    singularName: 'marketplace-360';
+    pluralName: 'marketplace-360s';
+    displayName: 'Marketplace 360';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    media: Attribute.Media<'images', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    marketplace_360_category: Attribute.Relation<
+      'api::marketplace-360.marketplace-360',
+      'oneToOne',
+      'api::marketplace-360-category.marketplace-360-category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::egogo-specialty-live.egogo-specialty-live',
+      'api::marketplace-360.marketplace-360',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::egogo-specialty-live.egogo-specialty-live',
+      'api::marketplace-360.marketplace-360',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::marketplace-360.marketplace-360',
+      'oneToMany',
+      'api::marketplace-360.marketplace-360'
+    >;
+    locale: Attribute.String;
   };
 }
 
-export interface ApiEgogoTiktokPartnerEgogoTiktokPartner
+export interface ApiMarketplace360CategoryMarketplace360Category
   extends Schema.CollectionType {
-  collectionName: 'egogo_tiktok_partners';
+  collectionName: 'marketplace_360_categories';
   info: {
-    singularName: 'egogo-tiktok-partner';
-    pluralName: 'egogo-tiktok-partners';
-    displayName: 'egogo-tiktok-partner';
+    singularName: 'marketplace-360-category';
+    pluralName: 'marketplace-360-categories';
+    displayName: 'Marketplace 360 Category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.UID<
+      'api::marketplace-360-category.marketplace-360-category',
+      'name'
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::marketplace-360-category.marketplace-360-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::marketplace-360-category.marketplace-360-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::marketplace-360-category.marketplace-360-category',
+      'oneToMany',
+      'api::marketplace-360-category.marketplace-360-category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiPressReleasePressRelease extends Schema.CollectionType {
+  collectionName: 'press_releases';
+  info: {
+    singularName: 'press-release';
+    pluralName: 'press-releases';
+    displayName: 'Press Release';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+    subtitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+    press_release_category: Attribute.Relation<
+      'api::press-release.press-release',
+      'oneToOne',
+      'api::press-release-category.press-release-category'
+    >;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    coverMedia: Attribute.Media<'images' | 'videos'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    slug: Attribute.UID<'api::press-release.press-release', 'title'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::press-release.press-release',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::press-release.press-release',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::press-release.press-release',
+      'oneToMany',
+      'api::press-release.press-release'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiPressReleaseCategoryPressReleaseCategory
+  extends Schema.CollectionType {
+  collectionName: 'press_release_categories';
+  info: {
+    singularName: 'press-release-category';
+    pluralName: 'press-release-categories';
+    displayName: 'Press Release Category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+    slug: Attribute.UID<
+      'api::press-release-category.press-release-category',
+      'name'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::press-release-category.press-release-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::press-release-category.press-release-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::press-release-category.press-release-category',
+      'oneToMany',
+      'api::press-release-category.press-release-category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiReelReel extends Schema.CollectionType {
+  collectionName: 'reels';
+  info: {
+    singularName: 'reel';
+    pluralName: 'reels';
+    displayName: 'Reel';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    ProfileName: Attribute.String;
-    ProfileImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    reelEmbed: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::reel.reel', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::reel.reel', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTiktokPartnerTiktokPartner extends Schema.CollectionType {
+  collectionName: 'tiktok_partners';
+  info: {
+    singularName: 'tiktok-partner';
+    pluralName: 'tiktok-partners';
+    displayName: 'Tiktok Partner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    url: Attribute.String;
+    logo: Attribute.Media<'images' | 'videos', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::egogo-tiktok-partner.egogo-tiktok-partner',
+      'api::tiktok-partner.tiktok-partner',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::egogo-tiktok-partner.egogo-tiktok-partner',
+      'api::tiktok-partner.tiktok-partner',
       'oneToOne',
       'admin::user'
     > &
@@ -1108,15 +1577,22 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
-      'api::egogo-inquiry-faq.egogo-inquiry-faq': ApiEgogoInquiryFaqEgogoInquiryFaq;
-      'api::egogo-investor-relation.egogo-investor-relation': ApiEgogoInvestorRelationEgogoInvestorRelation;
+      'api::client.client': ApiClientClient;
       'api::egogo-journey.egogo-journey': ApiEgogoJourneyEgogoJourney;
-      'api::egogo-live-host.egogo-live-host': ApiEgogoLiveHostEgogoLiveHost;
-      'api::egogo-partner.egogo-partner': ApiEgogoPartnerEgogoPartner;
-      'api::egogo-press-release.egogo-press-release': ApiEgogoPressReleaseEgogoPressRelease;
-      'api::egogo-specialty-360.egogo-specialty-360': ApiEgogoSpecialty360EgogoSpecialty360;
-      'api::egogo-specialty-live.egogo-specialty-live': ApiEgogoSpecialtyLiveEgogoSpecialtyLive;
-      'api::egogo-tiktok-partner.egogo-tiktok-partner': ApiEgogoTiktokPartnerEgogoTiktokPartner;
+      'api::inquiry.inquiry': ApiInquiryInquiry;
+      'api::inquiry-faq.inquiry-faq': ApiInquiryFaqInquiryFaq;
+      'api::investor-relation.investor-relation': ApiInvestorRelationInvestorRelation;
+      'api::job-department.job-department': ApiJobDepartmentJobDepartment;
+      'api::job-vacancy.job-vacancy': ApiJobVacancyJobVacancy;
+      'api::live-commerce.live-commerce': ApiLiveCommerceLiveCommerce;
+      'api::live-commerce-category.live-commerce-category': ApiLiveCommerceCategoryLiveCommerceCategory;
+      'api::live-host.live-host': ApiLiveHostLiveHost;
+      'api::marketplace-360.marketplace-360': ApiMarketplace360Marketplace360;
+      'api::marketplace-360-category.marketplace-360-category': ApiMarketplace360CategoryMarketplace360Category;
+      'api::press-release.press-release': ApiPressReleasePressRelease;
+      'api::press-release-category.press-release-category': ApiPressReleaseCategoryPressReleaseCategory;
+      'api::reel.reel': ApiReelReel;
+      'api::tiktok-partner.tiktok-partner': ApiTiktokPartnerTiktokPartner;
     }
   }
 }

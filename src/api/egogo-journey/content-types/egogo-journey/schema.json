@@ -4,28 +4,30 @@
   "info": {
     "singularName": "egogo-journey",
     "pluralName": "egogo-journeys",
-    "displayName": "egogo-journey"
+    "displayName": "Egogo Journey",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Year": {
-      "type": "string"
+    "historicalDescription": {
+      "type": "text",
+      "required": true
     },
-    "HistoricalText": {
-      "type": "string"
-    },
-    "HistoricalImage": {
+    "historicalMedia": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
+        "videos"
+      ]
+    },
+    "date": {
+      "type": "date",
+      "required": true
     }
   }
 }

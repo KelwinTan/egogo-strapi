@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tiktok_partners",
+  "info": {
+    "singularName": "tiktok-partner",
+    "pluralName": "tiktok-partners",
+    "displayName": "Tiktok Partner"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

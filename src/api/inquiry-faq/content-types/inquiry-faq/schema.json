@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "inquiry_faqs",
+  "info": {
+    "singularName": "inquiry-faq",
+    "pluralName": "inquiry-faqs",
+    "displayName": "Inquiry FAQ",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "question": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "answer": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

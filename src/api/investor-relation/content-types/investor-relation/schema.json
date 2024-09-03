@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "investor_relations",
+  "info": {
+    "singularName": "investor-relation",
+    "pluralName": "investor-relations",
+    "displayName": "Investor Relation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "date": {
+      "type": "date",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "fileName": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
