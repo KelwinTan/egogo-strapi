@@ -982,6 +982,12 @@ export interface ApiInvestorRelationInvestorRelation
           localized: true;
         };
       }>;
+    Seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1003,6 +1009,89 @@ export interface ApiInvestorRelationInvestorRelation
       'api::investor-relation.investor-relation'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiJobApplicantJobApplicant extends Schema.CollectionType {
+  collectionName: 'job_applicants';
+  info: {
+    singularName: 'job-applicant';
+    pluralName: 'job-applicants';
+    displayName: 'Job Applicant';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    fullName: Attribute.String;
+    email: Attribute.Email;
+    idCardNumber: Attribute.String;
+    phoneNumber: Attribute.String;
+    dateOfBirth: Attribute.Date;
+    placeOfBirth: Attribute.String;
+    gender: Attribute.Enumeration<['Male', 'Female']>;
+    bloodType: Attribute.Enumeration<['A', 'B', 'AB', 'O']>;
+    nationality: Attribute.Enumeration<['Indonesian', 'Foreigner']>;
+    maritalStatus: Attribute.Enumeration<['Single', 'Married', 'Divorced']>;
+    completeAddress: Attribute.Text;
+    professionalSummary: Attribute.Text;
+    expectedSalary: Attribute.String;
+    resume: Attribute.Media<'files'>;
+    linkPortofolio: Attribute.String;
+    linkWebsite: Attribute.String;
+    linkLinkedin: Attribute.String;
+    linkFacebook: Attribute.String;
+    linkInstagram: Attribute.String;
+    lastEducation: Attribute.Enumeration<['SMU/SMK', 'D3', 'D4', 'S1', 'S2']>;
+    schoolOrUniversityName: Attribute.String;
+    startEducationYear: Attribute.String;
+    endEducationYear: Attribute.String;
+    GPA: Attribute.String;
+    educationStream: Attribute.Enumeration<
+      [
+        'Teknik Industri',
+        'Teknik Mesin',
+        'Teknik Elektro',
+        'Teknik Material Metalurgi',
+        'Teknik Mekatronika',
+        'Teknik Kimia',
+        'Teknik Fisika',
+        'Teknik Lingkungan',
+        'Teknik Sipil',
+        'Bisnis',
+        'Manajemen',
+        'Akuntansi',
+        'Perpajakan',
+        'Administrasi/Bisnis Administrasi',
+        'Hukum',
+        'Psikologi',
+        'Manajemen/Sistem/Teknik Informatika',
+        'Komunikasi',
+        'Humas/Public Relation',
+        'Matematika/Statistika',
+        'Design',
+        'Broadcasting',
+        'Keperawatan',
+        'Ahli Gizi',
+        'Other'
+      ]
+    >;
+    questionnaireAboutEgogoJobs: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::job-applicant.job-applicant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::job-applicant.job-applicant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1044,13 +1133,21 @@ export interface ApiJobVacancyJobVacancy extends Schema.CollectionType {
     singularName: 'job-vacancy';
     pluralName: 'job-vacancies';
     displayName: 'Job Vacancy';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    jobTitle: Attribute.String;
-    jobDescription: Attribute.Text;
+    title: Attribute.String;
+    summary: Attribute.Text;
+    location: Attribute.Enumeration<['Indonesia', 'China', 'Hong Kong']>;
+    description: Attribute.RichText;
+    job_department: Attribute.Relation<
+      'api::job-vacancy.job-vacancy',
+      'oneToOne',
+      'api::job-department.job-department'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1582,6 +1679,7 @@ declare module '@strapi/types' {
       'api::inquiry.inquiry': ApiInquiryInquiry;
       'api::inquiry-faq.inquiry-faq': ApiInquiryFaqInquiryFaq;
       'api::investor-relation.investor-relation': ApiInvestorRelationInvestorRelation;
+      'api::job-applicant.job-applicant': ApiJobApplicantJobApplicant;
       'api::job-department.job-department': ApiJobDepartmentJobDepartment;
       'api::job-vacancy.job-vacancy': ApiJobVacancyJobVacancy;
       'api::live-commerce.live-commerce': ApiLiveCommerceLiveCommerce;

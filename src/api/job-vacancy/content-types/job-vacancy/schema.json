@@ -4,18 +4,35 @@
   "info": {
     "singularName": "job-vacancy",
     "pluralName": "job-vacancies",
-    "displayName": "Job Vacancy"
+    "displayName": "Job Vacancy",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "jobTitle": {
+    "title": {
       "type": "string"
     },
-    "jobDescription": {
+    "summary": {
       "type": "text"
+    },
+    "location": {
+      "type": "enumeration",
+      "enum": [
+        "Indonesia",
+        "China",
+        "Hong Kong"
+      ]
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "job_department": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::job-department.job-department"
     }
   }
 }

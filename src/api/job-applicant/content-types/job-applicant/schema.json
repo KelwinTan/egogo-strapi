@@ -1,0 +1,150 @@
+{
+  "kind": "collectionType",
+  "collectionName": "job_applicants",
+  "info": {
+    "singularName": "job-applicant",
+    "pluralName": "job-applicants",
+    "displayName": "Job Applicant"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fullName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "idCardNumber": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "dateOfBirth": {
+      "type": "date"
+    },
+    "placeOfBirth": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Female"
+      ]
+    },
+    "bloodType": {
+      "type": "enumeration",
+      "enum": [
+        "A",
+        "B",
+        "AB",
+        "O"
+      ]
+    },
+    "nationality": {
+      "type": "enumeration",
+      "enum": [
+        "Indonesian",
+        "Foreigner"
+      ]
+    },
+    "maritalStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Single",
+        "Married",
+        "Divorced"
+      ]
+    },
+    "completeAddress": {
+      "type": "text"
+    },
+    "professionalSummary": {
+      "type": "text"
+    },
+    "expectedSalary": {
+      "type": "string"
+    },
+    "resume": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "linkPortofolio": {
+      "type": "string"
+    },
+    "linkWebsite": {
+      "type": "string"
+    },
+    "linkLinkedin": {
+      "type": "string"
+    },
+    "linkFacebook": {
+      "type": "string"
+    },
+    "linkInstagram": {
+      "type": "string"
+    },
+    "lastEducation": {
+      "type": "enumeration",
+      "enum": [
+        "SMU/SMK",
+        "D3",
+        "D4",
+        "S1",
+        "S2"
+      ]
+    },
+    "schoolOrUniversityName": {
+      "type": "string"
+    },
+    "startEducationYear": {
+      "type": "string"
+    },
+    "endEducationYear": {
+      "type": "string"
+    },
+    "GPA": {
+      "type": "string"
+    },
+    "educationStream": {
+      "type": "enumeration",
+      "enum": [
+        "Teknik Industri",
+        "Teknik Mesin",
+        "Teknik Elektro",
+        "Teknik Material Metalurgi",
+        "Teknik Mekatronika",
+        "Teknik Kimia",
+        "Teknik Fisika",
+        "Teknik Lingkungan",
+        "Teknik Sipil",
+        "Bisnis",
+        "Manajemen",
+        "Akuntansi",
+        "Perpajakan",
+        "Administrasi/Bisnis Administrasi",
+        "Hukum",
+        "Psikologi",
+        "Manajemen/Sistem/Teknik Informatika",
+        "Komunikasi",
+        "Humas/Public Relation",
+        "Matematika/Statistika",
+        "Design",
+        "Broadcasting",
+        "Keperawatan",
+        "Ahli Gizi",
+        "Other"
+      ]
+    },
+    "questionnaireAboutEgogoJobs": {
+      "type": "string"
+    }
+  }
+}
