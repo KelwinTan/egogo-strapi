@@ -4,7 +4,8 @@
   "info": {
     "singularName": "inquiry",
     "pluralName": "inquiries",
-    "displayName": "Inquiry"
+    "displayName": "Inquiry",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,7 +24,7 @@
     "email": {
       "type": "string"
     },
-    "question": {
+    "questions": {
       "type": "text"
     }
   }

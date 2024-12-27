@@ -590,6 +590,53 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -741,53 +788,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
-  info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiClientClient extends Schema.CollectionType {
   collectionName: 'clients';
   info: {
@@ -859,6 +859,7 @@ export interface ApiInquiryInquiry extends Schema.CollectionType {
     singularName: 'inquiry';
     pluralName: 'inquiries';
     displayName: 'Inquiry';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -868,7 +869,7 @@ export interface ApiInquiryInquiry extends Schema.CollectionType {
     firstName: Attribute.String;
     lastName: Attribute.String;
     email: Attribute.String;
-    question: Attribute.Text;
+    questions: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1018,12 +1019,17 @@ export interface ApiJobApplicantJobApplicant extends Schema.CollectionType {
     singularName: 'job-applicant';
     pluralName: 'job-applicants';
     displayName: 'Job Applicant';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    fullName: Attribute.String;
+    fullName: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
     email: Attribute.Email;
     idCardNumber: Attribute.String;
     phoneNumber: Attribute.String;
@@ -1077,6 +1083,11 @@ export interface ApiJobApplicantJobApplicant extends Schema.CollectionType {
       ]
     >;
     questionnaireAboutEgogoJobs: Attribute.String;
+    job_vacancy: Attribute.Relation<
+      'api::job-applicant.job-applicant',
+      'oneToOne',
+      'api::job-vacancy.job-vacancy'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1148,6 +1159,7 @@ export interface ApiJobVacancyJobVacancy extends Schema.CollectionType {
       'oneToOne',
       'api::job-department.job-department'
     >;
+    slug: Attribute.UID<'api::job-vacancy.job-vacancy', 'title'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1670,10 +1682,10 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
       'api::client.client': ApiClientClient;
       'api::egogo-journey.egogo-journey': ApiEgogoJourneyEgogoJourney;
       'api::inquiry.inquiry': ApiInquiryInquiry;

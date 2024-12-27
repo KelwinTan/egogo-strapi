@@ -33,6 +33,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::job-department.job-department"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }
